@@ -1,11 +1,9 @@
-import './App.css';
-import Home from './components/home';
-import Login from './components/login';
+import "./App.css";
+import Home from "./components/home";
+import Login from "./components/login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
-import { Context } from './utils/context.js';
-// import { get } from './utils/extractdata.js';
-
+import React, { useEffect, useState } from "react";
+import { Context } from "./utils/context.js";
 
 function App() {
   const [ACCESS_TOKEN, setAccessToken] = useState("");
@@ -19,9 +17,10 @@ function App() {
   const getToken = async () => {
     function getHashparams() {
       var hashParams = {};
-      var e, r = /([^&;=]+)=?([^&;]*)/g,
+      var e,
+        r = /([^&;=]+)=?([^&;]*)/g,
         q = window.location.hash.substring(1);
-      e = r.exec(q)
+      e = r.exec(q);
       while (e) {
         hashParams[e[1]] = decodeURIComponent(e[2]);
         e = r.exec(q);
@@ -32,20 +31,22 @@ function App() {
     console.log(ACCESS_TOKEN);
     setAccessToken(data.access_token);
     setRefreshToken(data.refresh_token);
-  }
-
+  };
 
   return (
     // Context.provider allows ACCESS_TOKEN to be used in all components inside it
-    <Context.Provider value={ACCESS_TOKEN}> 
-     <BrowserRouter>
+    <Context.Provider value={ACCESS_TOKEN}>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={ACCESS_TOKEN ? <Home /> : <Login />} />
+          <Route
+            path="/"
+            exact
+            element={ACCESS_TOKEN ? <Home /> : <Login />}
+          />
         </Routes>
       </BrowserRouter>
     </Context.Provider>
-
-  )
-};
+  );
+}
 
 export default App;
