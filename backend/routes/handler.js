@@ -32,11 +32,14 @@ router.get("/login", (req, res) => {
     "streaming",
     "user-read-private",
     "user-read-email",
+    'app-remote-control',
+    "user-library-modify",
     "user-read-playback-state",
     "user-modify-playback-state",
     "user-read-currently-playing",
     "user-read-playback-position",
     "user-top-read",
+    'user-library-read'
   ].join(" ");
   req.headers["Access-Control-Allow-Origin"] = "*";
   // req.headers['Access-Control-Allow-Credentials'] = 'true';

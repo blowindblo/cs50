@@ -4,6 +4,7 @@ import Login from "./components/login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Context } from "./utils/context.js";
+import GetDevice from "./components/getdevice";
 
 function App() {
   const [ACCESS_TOKEN, setAccessToken] = useState("");
@@ -36,15 +37,13 @@ function App() {
   return (
     // Context.provider allows ACCESS_TOKEN to be used in all components inside it
     <Context.Provider value={ACCESS_TOKEN}>
-      <BrowserRouter>
+      {ACCESS_TOKEN ? <Home /> : <Login />}
+      {/* <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            exact
-            element={ACCESS_TOKEN ? <Home /> : <Login />}
-          />
+          <Route path="/" exact element={ACCESS_TOKEN ? <Home /> : <Login />} />
+          <Route path="/player" exact element={ACCESS_TOKEN ? <GetDevice /> : <>"null"</>} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </Context.Provider>
   );
 }

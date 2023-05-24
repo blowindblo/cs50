@@ -1,4 +1,8 @@
 import React from "react";
+import GetDevice from "./getdevice.jsx";
+import WebPlayback from "./WebPlayback";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import { useState, useContext, useEffect } from "react";
 import { Context } from "../utils/context.js";
 import queryString from "querystring";
@@ -100,7 +104,7 @@ function Home() {
       <div>
         {ACCESS_TOKEN ? <div>Profile: {profile.display_name}</div> : "null"}
       </div>
-      <div>Top Artists {JSON.stringify(TopArtists.name)}</div>
+      {/* <div>Top Artists {JSON.stringify(TopArtists.name)}</div>
       <ol>
         {TopArtists.map((d) => (
           <li key={d.name}>
@@ -114,7 +118,10 @@ function Home() {
             {d.name} {d.features.valence}
           </li>
         ))}
-      </ol>
+      </ol> */}
+      {/* <a href="/player">Player</a> */}
+      {/* <WebPlayback /> */}
+      <GetDevice />
     </>
   );
 }
